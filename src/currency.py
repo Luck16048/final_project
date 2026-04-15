@@ -32,5 +32,11 @@ class CurrencyConverter:
         for currency, rate in self.rates.items():
             print(f"{currency}: {rate}")
 
+    def save_history(self, filename="currency_history.json"):
+        import json
+        with open(filename, "w") as f:
+            json.dump(self.history, f, indent=4)
+        print("Saved to", filename)
+
     def __str__(self):
         return f"CurrencyConverter with {len(self.rates)} currencies"
