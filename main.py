@@ -11,7 +11,8 @@ def main():
         print("1. Investment calculator")
         print("2. Loan calculator")
         print("3. Currency converter")
-        print("4. Exit")
+        print("4. Show history")
+        print("5. Exit")
 
         choice = input("\nChoice: ")
 
@@ -23,6 +24,7 @@ def main():
                 investment = Investment(amount, rate, years)
                 print("Simple interest:", round(investment.simple_interest(), 2))
                 print("Compound interest:", round(investment.compound_interest(), 2))
+                investment.save_history()
             except ValueError as e:
                 print("Error:", e)
 
@@ -33,6 +35,7 @@ def main():
                 months = int(input("Months: "))
                 loan = Loan(amount, rate, months)
                 print("Monthly payment:", round(loan.monthly_payment(), 2))
+                loan.save_history()
             except ValueError as e:
                 print("Error:", e)
 
@@ -50,12 +53,26 @@ def main():
                     from_c = input("From: ")
                     to_c = input("To: ")
                     print("Result:", converter.convert(amount, from_c, to_c), to_c)
+                    converter.save_history()
                 elif action == "3":
                     converter.show_rates()
             except (ValueError, KeyError) as e:
                 print("Error:", e)
 
         elif choice == "4":
+            import json
+            from pathlib import Path
+            for filename in ["investment_history.json", "loan_history.json", "currency_history.json"]:
+                if Path(filename).exists():
+                    print(f"\n--- {filename} ---")
+                    with open(filename, "r") as f:
+                        history = json.load(f)
+                    for record in history:
+                        print(record)
+                else:
+                    print(f"\n{filename} is empty")
+
+        elif choice == "5":
             break
 
         else:
