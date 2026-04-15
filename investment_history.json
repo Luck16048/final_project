@@ -1,0 +1,16 @@
+[
+    {
+        "amount": 20000.0,
+        "rate": 2.7,
+        "years": 4,
+        "simple_interest": 236000.0,
+        "compound_interest": 3748322.0
+    },
+    {
+        "amount": 2000.0,
+        "rate": 0.027,
+        "years": 2,
+        "simple_interest": 2108.0,
+        "compound_interest": 2109.46
+    }
+]

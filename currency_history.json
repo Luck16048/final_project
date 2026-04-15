@@ -1,0 +1,8 @@
+[
+    {
+        "from": "USD",
+        "to": "EUR",
+        "amount": 1200.0,
+        "result": 320.0
+    }
+]
